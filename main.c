@@ -11,43 +11,43 @@
 #include "uicurs.h"
 
 /*
- *  –ò–Ω—Ñ–æ—Ä–º–∞—Ü–∏—è –∏–∑ –ë–î –∑–∞–≥—Ä—É–∂–∞–µ—Ç—Å—è –≤ –ø–∞–º—è—Ç—å –∫–æ–º–ø—å—é—Ç–µ—Ä–∞ –ø–æ—Å–ª–µ–¥–æ–≤–∞—Ç–µ–ª—å–Ω—ã–º —Å—á–∏—Ç—ã–≤–∞–Ω–∏–µ–º –∑–∞–ø–∏—Å–µ–π; –ø–æ–¥ –∫–∞–∂–¥—É—é –∑–∞–ø–∏—Å—å –≤—ã–¥–µ–ª—è–µ—Ç—Å—è –ø—Ä–æ—Å—Ç—Ä–∞–Ω—Å—Ç–≤–æ –≤ –û–ó–£ (—Å—Ç—Ä—É–∫—Ç—É—Ä–∞ struct DbRecord).
- *  –î–æ—Å—Ç—É–ø –∫ –∑–∞–≥—Ä—É–∂–µ–Ω–Ω–æ–π –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏–∏ –æ—Å—É—â–µ—Å—Ç–≤–ª—è–µ—Ç—Å—è –ø–æ—Å—Ä–µ–¥—Å—Ç–≤–æ–º —Å–ø–∏—Å–∫–∞ —É–∫–∞–∑–∞—Ç–µ–ª–µ–π –Ω–∞ —Å—Ç—Ä—É–∫—Ç—É—Ä—ã –≤ –ø–∞–º—è—Ç–∏.
- *  –ò–Ω–¥–µ–∫—Å–∞—Ü–∏—è –∏ —Å–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ –∏ –ø—Ä–æ—á–∏–µ –¥–µ–π—Å—Ç–≤–∏—è –ø—Ä–æ–∏—Å–∑–æ–¥—è—Ç—Å—è —Ç–æ–ª—å–∫–æ –Ω–∞–¥ —É–∫–∞–∑–∞—Ç–µ–ª—è–º–∏; –∏ –∑–∞–≥—Ä—É–∂–µ–Ω–Ω—ã–µ –¥–∞–Ω–Ω—ã–µ, –∏ –∏—Ö —Ä–∞–∑–º–µ—â–µ–Ω–∏–µ –≤ –ø—è–º—Ç–∏ –æ—Å—Ç–∞—é—Ç—Å—è –Ω–µ–∏–∑–º–µ–Ω–Ω—ã.
- *  –ü–æ—Å–∫–æ–ª—å–∫—É —Ç—Ä–µ–±—É–µ—Ç—Å—è –æ—Å—É—â–µ—Å—Ç–≤–ª—è—Ç—å –¥–æ—Å—Ç—É–ø –ø–æ —Ä–∞–∑–Ω—ã–º –∫–ª—é—á–∞–º (–≤–∫–ª–∞–¥—á–∏–∫ –∏ –∞–¥–≤–æ–∫–∞—Ç), –∏—Å–ø–æ–ª—å–∑—É–µ–º –¥–≤–∞ —Ä–∞–∑–Ω—ã—Ö —Å–ø–∏—Å–∫–∞ —É–∫–∞–∑–∞—Ç–µ–ª–µ–π.
+ *  à≠‰Æ‡¨†Ê®Ô ®ß ÅÑ ß†£‡„¶†•‚·Ô ¢ Ø†¨Ô‚Ï ™Æ¨ØÏÓ‚•‡† ØÆ·´•§Æ¢†‚•´Ï≠Î¨ ·Á®‚Î¢†≠®•¨ ß†Ø®·•©; ØÆ§ ™†¶§„Ó ß†Ø®·Ï ¢Î§•´Ô•‚·Ô Ø‡Æ·‚‡†≠·‚¢Æ ¢ éáì (·‚‡„™‚„‡† struct DbRecord).
+ *  ÑÆ·‚„Ø ™ ß†£‡„¶•≠≠Æ© ®≠‰Æ‡¨†Ê®® Æ·„È•·‚¢´Ô•‚·Ô ØÆ·‡•§·‚¢Æ¨ ·Ø®·™† „™†ß†‚•´•© ≠† ·‚‡„™‚„‡Î ¢ Ø†¨Ô‚®.
+ *  à≠§•™·†Ê®Ô ® ·Æ‡‚®‡Æ¢™† ® Ø‡ÆÁ®• §•©·‚¢®Ô Ø‡Æ®·ßÆ§Ô‚·Ô ‚Æ´Ï™Æ ≠†§ „™†ß†‚•´Ô¨®; ® ß†£‡„¶•≠≠Î• §†≠≠Î•, ® ®Â ‡†ß¨•È•≠®• ¢ ØÔ¨‚® Æ·‚†Ó‚·Ô ≠•®ß¨•≠≠Î.
+ *  èÆ·™Æ´Ï™„ ‚‡•°„•‚·Ô Æ·„È•·‚¢´Ô‚Ï §Æ·‚„Ø ØÆ ‡†ß≠Î¨ ™´ÓÁ†¨ (¢™´†§Á®™ ® †§¢Æ™†‚), ®·ØÆ´Ïß„•¨ §¢† ‡†ß≠ÎÂ ·Ø®·™† „™†ß†‚•´•©.
  */
 
 /*
- *  –í—Å–ø–æ–º–æ–≥–∞—Ç–µ–ª—å–Ω—ã–µ —Ñ—É–Ω–∫—Ü–∏–∏
+ *  Ç·ØÆ¨Æ£†‚•´Ï≠Î• ‰„≠™Ê®®
  */
-static int string_trim(char *str);          //—É–¥–∞–ª–∏—Ç—å –ø—Ä–æ–±–µ–ª—ã –≤ –∫–æ–Ω—Ü–µ —Å—Ç—Ä–æ–∫–∏; –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç ERR, –µ—Å–ª–∏ –∏–∑–Ω–∞—á–∞–ª—å–Ω–∞—è —Å—Ç—Ä–æ–∫–∞ –ø—É—Å—Ç–∞—è
-static int string_trimlstchr(char *str);    //—É–¥–∞–ª–∏—Ç—å –æ–¥–∏–Ω —Å–∏–º–≤–æ–ª –≤ –∫–æ–Ω—Ü–µ —Å—Ç—Ä–æ–∫–∏; –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç ERR, –µ—Å–ª–∏ –∏–∑–Ω–∞—á–∞–ª—å–Ω–∞—è —Å—Ç—Ä–æ–∫–∞ –ø—É—Å—Ç–∞—è
-static int ReadDbFile(const char* fname, struct List *dbcontents);   //—Å—á–∏—Ç–∞—Ç—å —Å–æ–¥–µ—Ä–∂–∏–º–æ–µ –ë–î –∏–∑ —Ñ–∞–π–ª–∞ –≤ —Å–ø–∏—Å–æ–∫; –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç OK/ERR
-static wndresult_t PrintLawyers(const struct List *dbcontents);      //–≤—ã–≤–æ–¥ –∏–º—ë–Ω –∞–¥–≤–æ–∫–∞—Ç–æ–≤ –∏–∑ —Å–ø–∏—Å–∫–∞, —Ö—Ä–∞–Ω—è—â–µ–≥–æ —Å–æ–¥–µ—Ä–∂–∏–º–æ–µ –ë–î
-static wndresult_t SearchName(struct Vertex *treeroot);              //–≤—ã–ø–æ–ª–Ω–∏—Ç—å –ø–æ–∏—Å–∫ –∑–∞–ø–∏—Å–∏ –≤ –¥–µ—Ä–µ–≤–µ –ø–æ –∏–º–µ–Ω–∏
+static int string_trim(char *str);          //„§†´®‚Ï Ø‡Æ°•´Î ¢ ™Æ≠Ê• ·‚‡Æ™®; ¢Æß¢‡†È†•‚ ERR, •·´® ®ß≠†Á†´Ï≠†Ô ·‚‡Æ™† Ø„·‚†Ô
+static int string_trimlstchr(char *str);    //„§†´®‚Ï Æ§®≠ ·®¨¢Æ´ ¢ ™Æ≠Ê• ·‚‡Æ™®; ¢Æß¢‡†È†•‚ ERR, •·´® ®ß≠†Á†´Ï≠†Ô ·‚‡Æ™† Ø„·‚†Ô
+static int ReadDbFile(const char* fname, struct List *dbcontents);   //·Á®‚†‚Ï ·Æ§•‡¶®¨Æ• ÅÑ ®ß ‰†©´† ¢ ·Ø®·Æ™; ¢Æß¢‡†È†•‚ OK/ERR
+static wndresult_t PrintLawyers(const struct List *dbcontents);      //¢Î¢Æ§ ®¨Ò≠ †§¢Æ™†‚Æ¢ ®ß ·Ø®·™†, Â‡†≠ÔÈ•£Æ ·Æ§•‡¶®¨Æ• ÅÑ
+static wndresult_t SearchName(struct Vertex *treeroot);              //¢ÎØÆ´≠®‚Ï ØÆ®·™ ß†Ø®·® ¢ §•‡•¢• ØÆ ®¨•≠®
 
 int main()
 {
-    //–∑–∞–≥—Ä—É–∑–∏—Ç—å —Å–æ–¥–µ—Ä–∂–∏–º–æ–µ —Ñ–∞–π–ª–∞ –≤ –û–ó–£
+    //ß†£‡„ß®‚Ï ·Æ§•‡¶®¨Æ• ‰†©´† ¢ éáì
     struct List *dbcontents = calloc(1, sizeof(struct List));
     if (ReadDbFile(DBFILENAME, dbcontents)==ERR){
         UIDestroy();
         return ERR;
     }
 
-    //–∏–Ω–∏—Ü–∏–∞–ª–∏–∑–∞—Ü–∏—è –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å—Å–∫–æ–≥–æ –∏–Ω—Ç–µ—Ä—Ñ–µ–π—Å–∞
+    //®≠®Ê®†´®ß†Ê®Ô ØÆ´ÏßÆ¢†‚•´Ï·™Æ£Æ ®≠‚•‡‰•©·†
     if (UIInit() == ERR) return ERR;
 
-    //–ø–æ—Å—Ç—Ä–æ–∏—Ç—å –∏–∑ –∑–∞–≥—Ä—É–∂–µ–Ω–Ω—ã—Ö –¥–∞–Ω–Ω—ã—Ö –¥–µ—Ä–µ–≤–æ –ø–æ–∏—Å–∫–∞, –æ—Ç–æ–±—Ä–∞–∂–∞—è –∏–Ω–¥–∏–∫–∞—Ç–æ—Ä –ø—Ä–æ–≥—Ä–µ—Å—Å–∞
+    //ØÆ·‚‡Æ®‚Ï ®ß ß†£‡„¶•≠≠ÎÂ §†≠≠ÎÂ §•‡•¢Æ ØÆ®·™†, Æ‚Æ°‡†¶†Ô ®≠§®™†‚Æ‡ Ø‡Æ£‡•··†
     struct Vertex *treeroot = NULL;
     size_t counter = 0;
     for (struct Node *n=dbcontents->head; n!=NULL; n=n->next, counter++){
-        UIProgressbarDisplay(counter*100/dbcontents->length, "–ü–æ—Å—Ç—Ä–æ–µ–Ω–∏–µ –ê–í–õ –¥–µ—Ä–µ–≤–∞");
+        UIProgressbarDisplay(counter*100/dbcontents->length, "èÆ·‚‡Æ•≠®• ÄÇã §•‡•¢†");
         treeroot = TreeInsert(n->data,treeroot);
     }
     UIProgressbarDestroy();
 
-    //–æ—Ç–æ–±—Ä–∞–∂–µ–Ω–∏–µ –æ–∫–æ–Ω –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å—Å–∫–æ–≥–æ –∏–Ω—Ç–µ—Ä—Ñ–µ–π—Å–∞ –≤ —Ü–∏–∫–ª–µ –¥–æ –∑–∞–≤–µ—Ä—à–µ–Ω–∏—è –ø—Ä–æ–≥—Ä–∞–º–º—ã
+    //Æ‚Æ°‡†¶•≠®• Æ™Æ≠ ØÆ´ÏßÆ¢†‚•´Ï·™Æ£Æ ®≠‚•‡‰•©·† ¢ Ê®™´• §Æ ß†¢•‡Ë•≠®Ô Ø‡Æ£‡†¨¨Î
     wndresult_t retcode = UIDisplayDbrecords(dbcontents, DBFILENAME);
     bool finish = FALSE;
     for(;!finish;){
@@ -56,18 +56,20 @@ int main()
         case EXIT:
             finish = TRUE;
             break;
-        case DOSEARCH:      //–∑–∞–ø—É—Å—Ç–∏—Ç—å –ø–æ–∏—Å–∫ –∑–∞–ø–∏—Å–∏
+        case DOSEARCH:      //ß†Ø„·‚®‚Ï ØÆ®·™ ß†Ø®·®
             retcode = SearchName(treeroot);
             break;
-        case SHOWDB:        //–≤—ã–≤–µ—Å—Ç–∏ —Å–æ–¥–µ—Ä–∂–∏–º–æ–µ –ë–î
+        case SHOWDB:        //¢Î¢•·‚® ·Æ§•‡¶®¨Æ• ÅÑ
             retcode = UIDisplayDbrecords(dbcontents, DBFILENAME);
             break;
-        case SHOWLR:        //–≤—ã–≤–µ—Å—Ç–∏ —Å–ø–∏—Å–æ–∫ –∞–¥–≤–æ–∫–∞—Ç–æ–≤
+        case SHOWLR:        //¢Î¢•·‚® ·Ø®·Æ™ †§¢Æ™†‚Æ¢
             retcode = PrintLawyers(dbcontents);
+            break;
+        default:
             break;
         }
     }
-    //–ø–æ –∑–∞–≤–µ—Ä—à–µ–Ω–∏—é –ø—Ä–æ–≥—Ä–∞–º–º—ã –¥–µ–∏–Ω–∏—Ü–∏–∞–ª–∏–∑–∏—Ä—É–µ–º –∏–Ω—Ç–µ—Ä—Ñ–µ–π—Å –∏ –æ—Å–≤–æ–±–æ–∂–¥–∞–µ–º –ø–∞–º—è—Ç—å
+    //ØÆ ß†¢•‡Ë•≠®Ó Ø‡Æ£‡†¨¨Î §•®≠®Ê®†´®ß®‡„•¨ ®≠‚•‡‰•©· ® Æ·¢Æ°Æ¶§†•¨ Ø†¨Ô‚Ï
     UIDestroy();
     TreeDestruct(treeroot);
     ListClear(dbcontents);
@@ -79,11 +81,11 @@ int main()
 static int string_trim(char *str){
     if (str == NULL) return ERR;
     size_t len=strlen(str);
-    if (len==0) return ERR;   //–ø—É—Å—Ç–∞—è —Å—Ç—Ä–æ–∫–∞
-    for (--len;len>0;len--){                    //–ø—Ä–æ–ø—É—Å—Ç–∏–≤ –∑–∞–≤–µ—Ä—à–∞—é—â–∏–π '\0', –¥–≤–∏–≥–∞—è—Å—å —Å–ø—Ä–∞–≤–∞ –Ω–∞–ª–µ–≤–æ,
-        if (isspace(str[len])) str[len] = '\0'; //–≤—Å–µ "–ø—É—Å—Ç—ã–µ" —Å–∏–º–≤–æ–ª—ã –∑–∞–º–µ–Ω–∏—Ç—å –Ω–∞ '\0',
-        else break;                             //–¥–æ –ø–µ—Ä–≤–æ–≥–æ –Ω–µ–ø—É—Å—Ç–æ–≥–æ
-    }                                           //–µ—Å–ª–∏ –≤ —Ü–∏–∫–ª–µ –¥–æ—à–ª–∏ –¥–æ –Ω–∞—á–∞–ª–∞ —Å—Ç—Ä–æ–∫–∏ –∏ —Å–∏–º–≤–æ–ª –≤ –Ω–∞—á–∞–ª–µ –ø—É—Å—Ç–æ–π - —Å—Ç—Ä–æ–∫–∞ –ø—É—Å—Ç–∞—è
+    if (len==0) return ERR;   //Ø„·‚†Ô ·‚‡Æ™†
+    for (--len;len>0;len--){                    //Ø‡ÆØ„·‚®¢ ß†¢•‡Ë†ÓÈ®© '\0', §¢®£†Ô·Ï ·Ø‡†¢† ≠†´•¢Æ,
+        if (isspace(str[len])) str[len] = '\0'; //¢·• "Ø„·‚Î•" ·®¨¢Æ´Î ß†¨•≠®‚Ï ≠† '\0',
+        else break;                             //§Æ Ø•‡¢Æ£Æ ≠•Ø„·‚Æ£Æ
+    }                                           //•·´® ¢ Ê®™´• §ÆË´® §Æ ≠†Á†´† ·‚‡Æ™® ® ·®¨¢Æ´ ¢ ≠†Á†´• Ø„·‚Æ© - ·‚‡Æ™† Ø„·‚†Ô
     if (len==0 && (str[len]=='\0' || isspace(str[len]))) return ERR;
     else return OK;
 }
@@ -91,7 +93,7 @@ static int string_trim(char *str){
 static int string_trimlstchr(char *str){
     if (str == NULL) return ERR;
     size_t len=strlen(str);
-    if (len==0) return ERR;   //–ø—É—Å—Ç–∞—è —Å—Ç—Ä–æ–∫–∞
+    if (len==0) return ERR;   //Ø„·‚†Ô ·‚‡Æ™†
     str[len-1] = '\0';
     return OK;
 }
@@ -101,12 +103,12 @@ static int ReadDbFile(const char* fname, struct List *dbcontents){
     if (fptr == NULL) return ERR;
     ListClear(dbcontents);
     char name[DBREC_NAME_LENGTH+1];
-    while(!feof(fptr)){                         //–ø–æ—Å—Ç—Ä–æ—á–Ω–æ —Å—á–∏—Ç—ã–≤–∞–µ–º —Ñ–∞–π–ª, –ø—Ä–æ–ø—É—Å–∫–∞—è —Å—Ç—Ä–æ–∫–∏, –≥–¥–µ –Ω–∞—á–∞–ª–æ (—Ç.–µ. –∏–º—è –≤–∫–ª–∞–¥—á–∏–∫–∞) - –ø—É—Å—Ç–æ–µ
+    while(!feof(fptr)){                         //ØÆ·‚‡ÆÁ≠Æ ·Á®‚Î¢†•¨ ‰†©´, Ø‡ÆØ„·™†Ô ·‚‡Æ™®, £§• ≠†Á†´Æ (‚.•. ®¨Ô ¢™´†§Á®™†) - Ø„·‚Æ•
         memset(name, '\0', DBREC_NAME_LENGTH+1);
         fgets(name, DBREC_NAME_LENGTH+1, fptr);
         if (string_trim(name)==ERR) continue;
         struct DbRecord *record = calloc(1, sizeof(struct DbRecord));
-        if (record == NULL){                    //–¥–ª—è –∫–∞–∂–¥–æ–π —Å—Ç—Ä–æ–∫–∏ (—Ç.–µ. –∑–∞–ø–∏—Å–∏) –≤—ã–¥–µ–ª—è–µ–º –≤ –ø–∞–º—è—Ç–∏ –Ω–æ–≤—É—é —Å—Ç—Ä—É–∫—Ç—É—Ä—É –∏ –∑–∞–ø–∏—Å—ã–≤–∞–µ–º –≤ –Ω–µ—ë –¥–∞–Ω–Ω—ã–µ
+        if (record == NULL){                    //§´Ô ™†¶§Æ© ·‚‡Æ™® (‚.•. ß†Ø®·®) ¢Î§•´Ô•¨ ¢ Ø†¨Ô‚® ≠Æ¢„Ó ·‚‡„™‚„‡„ ® ß†Ø®·Î¢†•¨ ¢ ≠•Ò §†≠≠Î•
             fclose(fptr);
             return ERR;
         }
@@ -115,7 +117,7 @@ static int ReadDbFile(const char* fname, struct List *dbcontents){
         fgets(record->date, DBREC_DATE_LENGTH+1, fptr);
         fgets(record->lawyer, DBREC_LAYR_LENGTH+1, fptr);
         string_trim(record->lawyer);
-        ListAppend(record, dbcontents);         //—Å—Å—ã–ª–∫—É –Ω–∞ –∫–∞–∂–¥—É—é —Å—Ç—Ä—É–∫—Ç—É—Ä—É –¥–æ–±–∞–≤–ª—è–µ–º –≤ —Å–ø–∏—Å–æ–∫
+        ListAppend(record, dbcontents);         //··Î´™„ ≠† ™†¶§„Ó ·‚‡„™‚„‡„ §Æ°†¢´Ô•¨ ¢ ·Ø®·Æ™
     }
     fclose(fptr);
     return OK;
@@ -124,49 +126,42 @@ static int ReadDbFile(const char* fname, struct List *dbcontents){
 static wndresult_t PrintLawyers(const struct List *dbcontents){
     struct List *lawyers = calloc(1, sizeof(struct List));
     for (struct Node *n=dbcontents->head;n!=NULL;n=n->next){
-        ListAppend(n->data,lawyers);            //—Å–æ–∑–¥–∞—ë–º –Ω–æ–≤—ã–π —Å–ø–∏—Å–æ–∫ —Å—Å—ã–ª–æ–∫ –Ω–∞ —Å—Ç—Ä—É–∫—Ç—É—Ä—ã
+        ListAppend(n->data,lawyers);            //·Æß§†Ò¨ ≠Æ¢Î© ·Ø®·Æ™ ··Î´Æ™ ≠† ·‚‡„™‚„‡Î
     }
-    ListDistinct(lawyers, LAWYER);              //—É–¥–∞–ª—è–µ–º –∏–∑ —Å–ø–∏—Å–∫–∞ –∑–∞–ø–∏—Å–∏, –≥–¥–µ –∏–º—è —é—Ä–∏—Å—Ç–∞ –¥—É–±–ª–∏—Ä—É–µ—Ç—Å—è
-    char *strgs[4+lawyers->length];             //–º–∞—Å—Å–∏–≤ —Å—Ç—Ä–æ–∫ –¥–ª—è —Ö—Ä–∞–Ω–µ–Ω–∏—è –∏–º–µ–Ω —é—Ä–∏—Å—Ç–æ–≤
+    ListDistinct(lawyers, LAWYER);              //„§†´Ô•¨ ®ß ·Ø®·™† ß†Ø®·®, £§• ®¨Ô Ó‡®·‚† §„°´®‡„•‚·Ô
+    char *strgs[4+lawyers->length];             //¨†··®¢ ·‚‡Æ™ §´Ô Â‡†≠•≠®Ô ®¨•≠ Ó‡®·‚Æ¢
     char *str = calloc(MAX_LINE_NEEDED, sizeof(char));
-    snprintf(str,MAX_LINE_NEEDED,"\t–ë–î —Å–æ–¥–µ—Ä–∂–∏—Ç %"PRIu64" –∞–¥–≤–æ–∫–∞—Ç–æ–≤:",lawyers->length);
-    strgs[0] = str;                             //–ø–µ—Ä–≤–æ–π —Å—Ç—Ä–æ–∫–æ–π –∑–∞–ø–∏—à–µ–º –æ–±—â—É—é –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏—é, —Å–ª–µ–¥—É—é—â–∏–µ - –∏–º–µ–Ω–∞
+    snprintf(str,MAX_LINE_NEEDED,"\tÅÑ ·Æ§•‡¶®‚ %"PRIu64" †§¢Æ™†‚Æ¢:",lawyers->length);
+    strgs[0] = str;                             //Ø•‡¢Æ© ·‚‡Æ™Æ© ß†Ø®Ë•¨ Æ°È„Ó ®≠‰Æ‡¨†Ê®Ó, ·´•§„ÓÈ®• - ®¨•≠†
     struct Node *l=lawyers->head;
     for (size_t i = 0; i < lawyers->length; l=l->next) strgs[++i] = l->data->lawyer;
-    wndresult_t retcode = UIDisplayStrings(1+lawyers->length, strgs);   //–≤—ã–≤–µ–¥–µ–º —Å—Ç—Ä–æ–∫–∏ –Ω–∞ —ç–∫—Ä–∞–Ω –∏ –≤–µ—Ä–Ω—ë–º –≤—ã–±—Ä–∞–Ω–Ω–æ–µ –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ–º –¥–µ–π—Å—Ç–≤–∏–µ
-    ListClear(lawyers);                         //–ø–µ—Ä–µ–¥ –∑–∞–≤–µ—Ä—à–µ–Ω–∏–µ–º –æ—á–∏—Å—Ç–∏–º –ø–∞–º—è—Ç—å
+    wndresult_t retcode = UIDisplayStrings(1+lawyers->length, strgs);   //¢Î¢•§•¨ ·‚‡Æ™® ≠† Ì™‡†≠ ® ¢•‡≠Ò¨ ¢Î°‡†≠≠Æ• ØÆ´ÏßÆ¢†‚•´•¨ §•©·‚¢®•
+    ListClear(lawyers);                         //Ø•‡•§ ß†¢•‡Ë•≠®•¨ ÆÁ®·‚®¨ Ø†¨Ô‚Ï
     free(lawyers);
     free(str);
     return retcode;
 }
 
 static wndresult_t SearchName(struct Vertex *treeroot){
-    UIDestroy();                                //PDCurses –ø—Ä–∏ –≤–≤–æ–¥–µ –Ω–µ –∏—Å–ø–æ–ª—å–∑—É–µ—Ç—Å—è –∏–∑-–∑–∞ —Å–ª–æ–∂–Ω–æ—Å—Ç–µ–π —Å –∫–∏—Ä–∏–ª–ª–∏—Ü–µ–π
+    UIDestroy();                                //PDCurses Ø‡® ¢¢Æ§• ≠• ®·ØÆ´Ïß„•‚·Ô ®ß-ß† ·´Æ¶≠Æ·‚•© · ™®‡®´´®Ê•©
     system("cls");
-    //–≤–≤–æ–¥ –¥–∞–Ω–Ω—ã—Ö
+    //¢¢Æ§ §†≠≠ÎÂ
     char dpsitr[DBREC_NAME_LENGTH+1];
-    printf("\n–í–≤–µ–¥–∏—Ç–µ –∏–º—è –≤–∫–ª–∞–¥—á–∏–∫–∞ –¥–ª—è –ø–æ–∏—Å–∫–∞: ");
+    printf("\nÇ¢•§®‚• ®¨Ô ¢™´†§Á®™† §´Ô ØÆ®·™†: ");
     fgets(dpsitr, DBREC_NAME_LENGTH, stdin);
     string_trimlstchr(dpsitr);
     char lawyer[DBREC_LAYR_LENGTH+1];
-    printf("\n–í–≤–µ–¥–∏—Ç–µ –∏–º—è –∞–¥–≤–æ–∫–∞—Ç–∞ –∏–ª–∏\n–Ω–∞–∂–º–∏—Ç–µ Enter –¥–ª—è –ø–æ–∏—Å–∫–∞ –ª—é–±–æ–π –∑–∞–ø–∏—Å–∏: ");
+    printf("\nÇ¢•§®‚• ®¨Ô †§¢Æ™†‚† ®´®\n≠†¶¨®‚• Enter §´Ô ØÆ®·™† ´Ó°Æ© ß†Ø®·®: ");
     fgets(lawyer, DBREC_LAYR_LENGTH, stdin);
-    bool empty_lawr = string_trimlstchr(lawyer)==ERR;
-    //–ø–æ–∏—Å–∫: —Å–æ–∑–¥–∞—ë–º —Å–ø–∏—Å–æ–∫ –¥–ª—è —Ö—Ä–∞–Ω–µ–Ω–∏—è —É–∫–∞–∑–∞—Ç–µ–ª–µ–π –Ω–∞ —Å—Ç—Ä—É–∫—Ç—É—Ä—ã, —É–¥–æ–≤–ª–µ—Ç–≤–æ—Ä—è—é—â–∏–µ —É—Å–ª–æ–≤–∏—è–º
+    string_trimlstchr(lawyer);
+    //ØÆ®·™: ·Æß§†Ò¨ ·Ø®·Æ™ §´Ô Â‡†≠•≠®Ô „™†ß†‚•´•© ≠† ·‚‡„™‚„‡Î, „§Æ¢´•‚¢Æ‡ÔÓÈ®• „·´Æ¢®Ô¨
     struct List *contents = calloc(1, sizeof(struct List));
     if (contents==NULL) return ERROR;
-    TreeSearch(dpsitr, treeroot, contents);     //–∏—â–µ–º –≤ –¥–µ—Ä–µ–≤–µ
-    if (!empty_lawr){                           //–µ—Å–ª–∏ –∑–∞–¥–∞–Ω–æ –∏–º—è —é—Ä–∏—Å—Ç–∞ - –¥–æ–ø–æ–ª–Ω–∏—Ç–µ–ª—å–Ω—ã–π —Ñ–∏–ª—å—Ç—Ä —Ä–µ–∑—É–ª—å—Ç–∞—Ç–æ–≤ –ø–æ —é—Ä–∏—Å—Ç—É
-        for (struct Node *n=contents->head;n!=NULL;n=n->next){
-            int cmpl = strncmp(lawyer, n->data->lawyer, strlen(lawyer));
-            if (cmpl!=0) ListRemove(n, contents);
-        }
-    }
-    ListSort(contents, DEPOSITOR);              //—Å–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ —Ä–µ–∑—É–ª—å—Ç–∞—Ç–æ–≤ –ø–æ–∏—Å–∫–∞ –ø–æ –∏–º–µ–Ω–∏ –≤–∫–ª–∞–¥—á–∏–∫–∞
+    TreeSearch(dpsitr, lawyer, treeroot, contents);     //®È•¨ ¢ §•‡•¢•
     char *title = calloc(MAX_LINE_NEEDED, sizeof(char));
-    if (contents->length==0) snprintf(title, MAX_LINE_NEEDED, "–ü–æ –∑–∞–ø—Ä–æ—Å—É %s | %s –∑–∞–ø–∏—Å–µ–π –Ω–µ –Ω–∞–π–¥–µ–Ω–æ!", dpsitr, lawyer);
-    else snprintf(title, MAX_LINE_NEEDED, "–ü–æ–∏—Å–∫ –ø–æ –∑–∞–ø—Ä–æ—Å—É %s | %s", dpsitr, lawyer);
-    UIInit();                                   //–∏–Ω–∏—Ü–∏–∞–ª–∏–∑–∏—Ä—É–µ–º –∏–Ω—Ç–µ—Ä—Ñ–µ–π—Å –∏ –æ—Ç–æ–±—Ä–∞–∂–∞–µ–º –Ω–∞–π–¥–µ–Ω–Ω—ã–µ –∑–∞–ø–∏—Å–∏
+    if (contents->length==0) snprintf(title, MAX_LINE_NEEDED, "èÆ ß†Ø‡Æ·„ %s | %s ß†Ø®·•© ≠• ≠†©§•≠Æ!", dpsitr, lawyer);
+    else snprintf(title, MAX_LINE_NEEDED, "èÆ®·™ ØÆ ß†Ø‡Æ·„ %s | %s", dpsitr, lawyer);
+    UIInit();                                   //®≠®Ê®†´®ß®‡„•¨ ®≠‚•‡‰•©· ® Æ‚Æ°‡†¶†•¨ ≠†©§•≠≠Î• ß†Ø®·®
     wndresult_t retcode = UIDisplayDbrecords(contents, title);
     ListClear(contents);
     free(contents);

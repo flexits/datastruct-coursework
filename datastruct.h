@@ -1,29 +1,29 @@
 #ifndef DATASTRUCT_H_INCLUDED
 #define DATASTRUCT_H_INCLUDED
 
-#define DBFILENAME "BASE3.DAT"  //╨╕╨╝╤П ╤Д╨░╨╣╨╗╨░ ╨С╨Ф
-#define DBREC_NAME_LENGTH   32  //╤А╨░╨╖╨╝╨╡╤А╤Л ╤В╨╡╨║╤Б╤В╨╛╨▓╤Л╤Е ╨┐╨╛╨╗╨╡╨╣
+#define DBFILENAME "BASE3.DAT"  //имя файла БД
+#define DBREC_NAME_LENGTH   32  //размеры текстовых полей
 #define DBREC_DATE_LENGTH   8
 #define DBREC_LAYR_LENGTH   22
-#define MAX_LINE_NEEDED (DBREC_DATE_LENGTH+DBREC_LAYR_LENGTH+DBREC_NAME_LENGTH+8+1) //╨╝╨░╨║╤Б╨╕╨╝╨░╨╗╤М╨╜╨░╤П ╨┤╨╗╨╕╨╜╨░ ╤Б╤В╤А╨╛╨║╨╕, ╤Б╨╛╨┤╨╡╤А╨╢╨░╤Й╨╡╨╣ ╨╖╨╜╨░╤З╨╡╨╜╨╕╤П ╨▓╤Б╨╡╤Е ╨┐╨╛╨╗╨╡╨╣, ╤А╨░╨╖╨┤╨╡╨╗╤С╨╜╨╜╤Л╤Е ╨┐╤А╨╛╨▒╨╡╨╗╨░╨╝╨╕, ╨╕ \0 ╨▓ ╨║╨╛╨╜╤Ж╨╡
+#define MAX_LINE_NEEDED (DBREC_DATE_LENGTH+DBREC_LAYR_LENGTH+DBREC_NAME_LENGTH+8+1) //максимальная длина строки, содержащей значения всех полей, разделённых пробелами, и \0 в конце
 /*
- *  ╨б╤В╤А╤Г╨║╤В╤Г╤А╤Л ╨┤╨░╨╜╨╜╤Л╤Е
+ *  Структуры данных
  */
-struct DbRecord {char name[DBREC_NAME_LENGTH+1]; int sum; char date[DBREC_DATE_LENGTH+1]; char lawyer[DBREC_LAYR_LENGTH+1];};   //╨╖╨░╨┐╨╕╤Б╤М ╨╕╨╖ ╨С╨Ф, ╤А╨░╨╖╨╝╨╡╤Й╨░╨╡╨╝╨░╤П ╨▓ ╨┐╨░╨╝╤П╤В╨╕
-struct Vertex {struct DbRecord *data; struct Vertex *left; struct Vertex *right; int bal;};                                     //╨▓╨╡╤А╤И╨╕╨╜╨░ ╨┤╨╡╤А╨╡╨▓╨░ (╤Е╤А╨░╨╜╨╕╤В ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╤М ╨╜╨░ ╨╖╨░╨┐╨╕╤Б╤М ╨╕╨╖ ╨С╨Ф)
-struct Node {struct DbRecord *data; struct Node *previous; struct Node *next;};                                                 //╤Г╨╖╨╡╨╗ ╤Б╨┐╨╕╤Б╨║╨░ (╤Е╤А╨░╨╜╨╕╤В ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╤М ╨╜╨░ ╨╖╨░╨┐╨╕╤Б╤М ╨╕╨╖ ╨С╨Ф)
-struct List {struct Node *head; struct Node *tail; size_t length;};                                                             //╤Б╨┐╨╕╤Б╨╛╨║: ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╨╕ ╨╜╨░ ╨╖╨░╨│╨╗╨░╨▓╨╜╤Л╨╣ ╨╕ ╨║╨╛╨╜╨╡╤З╨╜╤Л╨╣ ╤Г╨╖╨╗╤Л, ╨╛╨▒╤Й╨╡╨╡ ╨║╨╛╨╗-╨▓╨╛ ╤Г╨╖╨╗╨╛╨▓
+struct DbRecord {char name[DBREC_NAME_LENGTH+1]; int sum; char date[DBREC_DATE_LENGTH+1]; char lawyer[DBREC_LAYR_LENGTH+1];};   //запись из БД, размещаемая в памяти
+struct Vertex {struct DbRecord *data; struct Vertex *left; struct Vertex *right; int bal;};                                     //вершина дерева (хранит указатель на запись из БД)
+struct Node {struct DbRecord *data; struct Node *previous; struct Node *next;};                                                 //узел списка (хранит указатель на запись из БД)
+struct List {struct Node *head; struct Node *tail; size_t length;};                                                             //список: указатели на заглавный и конечный узлы, общее кол-во узлов
 /*
- *  ╨д╤Г╨╜╨║╤Ж╨╕╨╕ ╤А╨░╨▒╨╛╤В╤Л ╤Б ╨┤╨░╨╜╨╜╤Л╨╝╨╕
+ *  Функции работы с данными
  */
-struct Vertex* TreeInsert(struct DbRecord *data, struct Vertex *root);      //╨┤╨╛╨▒╨░╨▓╨╗╤П╨╡╤В ╨╖╨░╨┐╨╕╤Б╤М ╨╕╨╖ ╨С╨Ф ╨▓ ╨Р╨Т╨Ы-╨┤╨╡╤А╨╡╨▓╨╛, ╨▓╨╛╨╖╨▓╤А╨░╤Й╨░╨╡╤В ╨▓╨╡╤А╤И╨╕╨╜╤Г ╨┤╨╡╤А╨╡╨▓╨░
-void TreeDestruct(struct Vertex *root);                                     //╤Г╨┤╨░╨╗╤П╨╡╤В ╨▓╤Б╨╡ ╨▓╨╡╤А╤И╨╕╨╜╤Л ╨┤╨╡╤А╨╡╨▓╨░, ╨▓╤Л╤Б╨▓╨╛╨▒╨╛╨╢╨┤╨░╤П ╨╖╨░╨╜╤П╤В╤Г╤О ╨┐╨░╨╝╤П╤В╤М
-void TreeSearch(const char* key, struct Vertex *root, struct List *result); //╨┐╨╛╨╕╤Б╨║ ╨╖╨░╨┐╨╕╤Б╨╡╨╣ ╨▓ ╨┤╨╡╤А╨╡╨▓╨╡, ╨┤╨╗╤П ╨║╨╛╤В╨╛╤А╤Л╤Е ╨┐╨╛╨╗╨╡ name ╨╜╨░╤З╨╕╨╜╨░╨╡╤В╤Б╤П ╤Б key, ╨╕ ╨┤╨╛╨▒╨░╨▓╨╗╨╡╨╜╨╕╨╡ ╤Б╤Б╤Л╨╗╨╛╨║ ╨╜╨░ ╨╜╨░╨╣╨┤╨╡╨╜╨╜╨╛╨╡ ╨▓ ╤Б╨┐╨╕╤Б╨╛╨║
-void ListAppend(struct DbRecord *data, struct List *lst);                   //╨┤╨╛╨▒╨░╨▓╨╗╨╡╨╜╨╕╨╡ ╤Г╨╖╨╗╨░ ╨▓ ╨║╨╛╨╜╨╡╤Ж ╤Б╨┐╨╕╤Б╨║╨░
-void ListRemove(struct Node *n, struct List *lst);                          //╤Г╨┤╨░╨╗╨╡╨╜╨╕╨╡ ╤Г╨╖╨╗╨░ ╨╕╨╖ ╤Б╨┐╨╕╤Б╨║╨░
-void ListClear(struct List *lst);                                           //╤Г╨┤╨░╨╗╨╡╨╜╨╕╨╡ ╨▓╤Б╨╡╤Е ╤Г╨╖╨╗╨╛╨▓ ╤Б╨┐╨╕╤Б╨║╨░
-enum keyfield {DEPOSITOR, LAWYER};                                          //╨▓╤Л╨▒╨╛╤А ╨┐╨╛╨╗╤П ╤Б╨╛╤А╤В╨╕╤А╨╛╨▓╨║╨╕ ╤Б╨┐╨╕╤Б╨║╨░ - ╨╕╨╝╤П ╨▓╨║╨╗╨░╨┤╤З╨╕╨║╨░ ╨╕╨╗╨╕ ╨╕╨╝╤П ╨░╨┤╨▓╨╛╨║╨░╤В╨░
-void ListSort(struct List *lst, enum keyfield srt);                         //╤Б╨╛╤А╤В╨╕╤А╨╛╨▓╨║╨░ ╤Б╨┐╨╕╤Б╨║╨░ ╨╝╨╡╤В╨╛╨┤╨╛╨╝ ╨┐╤А╤П╨╝╨╛╨│╨╛ ╤Б╨╗╨╕╤П╨╜╨╕╤П ╨┐╨╛ ╨╖╨░╨┤╨░╨╜╨╜╨╛╨╝╤Г ╨┐╨╛╨╗╤О
-void ListDistinct(struct List *lst, enum keyfield srt);                     //╤Г╨┤╨░╨╗╨╡╨╜╨╕╨╡ ╨┤╤Г╨▒╨╗╨╕╤А╤Г╤О╤Й╨╕╤Е╤Б╤П ╨║╨╗╤О╤З╨╡╨╣ ╨╕╨╖ ╤Б╨┐╨╕╤Б╨║╨░ (╤Б╨┐╨╕╤Б╨╛╨║ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤Б╨╛╤А╤В╨╕╤А╨╛╨▓╨░╨╜)
+struct Vertex* TreeInsert(struct DbRecord *data, struct Vertex *root);      //добавляет запись из БД в АВЛ-дерево, возвращает вершину дерева (ключ - поле name записи)
+void TreeDestruct(struct Vertex *root);                                     //удаляет все вершины дерева, высвобождая занятую память
+void TreeSearch(const char* name, const char* lawyer, struct Vertex *root, struct List *result); //поиск записей в дереве, для которых поле name начинается с name, поле lawyer совпадает с lawyer, и добавление ссылок на найденное в список
+void ListAppend(struct DbRecord *data, struct List *lst);                   //добавление узла в конец списка
+void ListRemove(struct Node *n, struct List *lst);                          //удаление узла из списка
+void ListClear(struct List *lst);                                           //удаление всех узлов списка
+enum keyfield {DEPOSITOR, LAWYER};                                          //выбор поля сортировки списка - имя вкладчика или имя адвоката
+void ListSort(struct List *lst, enum keyfield srt);                         //сортировка списка методом прямого слияния по заданному полю
+void ListDistinct(struct List *lst, enum keyfield srt);                     //удаление дублирующихся ключей из списка (список будет отсортирован)
 
 #endif // DATASTRUCT_H_INCLUDED

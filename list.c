@@ -3,12 +3,12 @@
 #include <strings.h>
 #include "datastruct.h"
 /*
- *  Вспомогательные функции
+ *  �ᯮ����⥫�� �㭪樨
  */
-static void lst_append(struct Node *n, struct List *lst);                                           //добавление узла в конец списка
-static void node_move(struct Node *n, struct List *src, struct List *dst);                          //перемещение узла n из списка src в список dst (!удалит узел, если dst==NULL!)
-static void merge(struct List *lstA, struct List *lstB, struct List *out, enum keyfield srt);       //прямое слияние списков lstA и lstB в результирующий список out по заданному ключу
-static void rebuild_links(struct List *lst);                                                        //восстановление структуры указателей на предыдущие элементы после разбиения списка
+static void lst_append(struct Node *n, struct List *lst);                                           //���������� 㧫� � ����� ᯨ᪠
+static void node_move(struct Node *n, struct List *src, struct List *dst);                          //��६�饭�� 㧫� n �� ᯨ᪠ src � ᯨ᮪ dst (!㤠��� 㧥�, �᫨ dst==NULL!)
+static void merge(struct List *lstA, struct List *lstB, struct List *out, enum keyfield srt);       //��אַ� ᫨ﭨ� ᯨ᪮� lstA � lstB � १������騩 ᯨ᮪ out �� ��������� �����
+static void rebuild_links(struct List *lst);                                                        //����⠭������� �������� 㪠��⥫�� �� �।��騥 �������� ��᫥ ࠧ������ ᯨ᪠
 
 void ListClear(struct List *lst){
     if (lst==NULL) return;
@@ -32,10 +32,10 @@ void ListAppend(struct DbRecord *data, struct List *lst){
 static void lst_append(struct Node *n, struct List *lst){
     if (n==NULL || lst==NULL) return;
     n->next = NULL;
-    if (lst->tail==NULL){           //список пуст, добавляемая вершина - головной узел
+    if (lst->tail==NULL){           //ᯨ᮪ ����, ������塞�� ���設� - �������� 㧥�
         n->previous = NULL;
         lst->head = n;
-    } else{                         //добавляем вершину в конец списка
+    } else{                         //������塞 ���設� � ����� ᯨ᪠
         n->previous = lst->tail;
         lst->tail->next = n;
     }
@@ -44,19 +44,19 @@ static void lst_append(struct Node *n, struct List *lst){
 }
 
 static void node_move(struct Node *n, struct List *src, struct List *dst){
-                                    //переместить вершину = удалить n из списка src и добавить в список dst
+                                    //��६����� ���設� = 㤠���� n �� ᯨ᪠ src � �������� � ᯨ᮪ dst
     if (n==NULL || src==NULL) return;
-    if (n->next == NULL){           //n хвост
+    if (n->next == NULL){           //n 墮��
         src->tail = n->previous;
         if (src->tail != NULL){
             src->tail->next = NULL;
         } else{
             src->head = NULL;
         }
-    } else if (n->previous == NULL){//n голова
+    } else if (n->previous == NULL){//n ������
         n->next->previous = NULL;
         src->head = n->next;
-    } else {                        //n в середине
+    } else {                        //n � �।���
         n->previous->next = n->next;
         n->next->previous = n->previous;
     }
@@ -120,9 +120,9 @@ static void rebuild_links(struct List *lst){
 
 void ListSort(struct List *lst, enum keyfield srt){
     if (lst==NULL || lst->length<=0) return;
-    //n - количество элементов сортируемого списка
+    //n - ������⢮ ������⮢ ����㥬��� ᯨ᪠
     size_t n = lst->length;
-    //разбиение списка на две части A и B
+    //ࠧ������ ᯨ᪠ �� ��� ��� A � B
     struct List A = {NULL, NULL, 0};
     struct List B = {NULL, NULL, 0};
     struct Node *k = lst->head;
@@ -133,15 +133,15 @@ void ListSort(struct List *lst, enum keyfield srt){
         k->next = p->next;
         k = p;
     }
-    //восстановление указателей на элементы списков
+    //����⠭������� 㪠��⥫�� �� �������� ᯨ᪮�
     rebuild_links(&A);
     rebuild_links(&B);
-    //сортировка методом прямого слияния
-    //p - предполагаемый размер серии
-    //la - фактический размер серии в списке A, lb - в списке B
-    //m - число элементов в списке
-    //c0, c1 - врЕменные очереди
-    //i - номер активной очереди
+    //���஢�� ��⮤�� ��אַ�� ᫨ﭨ�
+    //p - �।��������� ࠧ��� �ਨ
+    //la - 䠪��᪨� ࠧ��� �ਨ � ᯨ᪥ A, lb - � ᯨ᪥ B
+    //m - �᫮ ������⮢ � ᯨ᪥
+    //c0, c1 - �������� ��।�
+    //i - ����� ��⨢��� ��।�
     //size_t la, lb;
     struct List c0 = {NULL, NULL, 0};
     struct List c1 = {NULL, NULL, 0};
@@ -174,8 +174,8 @@ void ListSort(struct List *lst, enum keyfield srt){
 void ListDistinct(struct List *lst, enum keyfield srt){
     if (lst==NULL || lst->length<=1) return;
     ListSort(lst, srt);
-    //если ключ очередного элемента отсортированного списка
-    //равен ключу предыдущего элемента, очередной элемент удаляется
+    //�᫨ ���� ��।���� ������� �����஢������ ᯨ᪠
+    //ࠢ�� ����� �।��饣� �������, ��।��� ������� 㤠�����
     for (struct Node *n=lst->head->next;n!=NULL;n=n->next){
         int cmp=1;
         if (srt==LAWYER){

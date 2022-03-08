@@ -11,23 +11,23 @@
 #define MENU_COLOR_PAIR_NUM 3       //menu line colors
 #define PBAR_COLOR_PAIR_NUM 4       //progress bar colors
 
-typedef struct {WINDOW *win; int X;int Y; int width;int height;} wndprops_t;//╤Б╨╛╨╖╨┤╨░╨╜╨╜╨╛╨╡ ╨╛╨║╨╜╨╛ ╨┐╤А╨╕╨╗╨╛╨╢╨╡╨╜╨╕╤П ╨╕ ╨╡╨│╨╛ ╤Б╨▓╨╛╨╣╤Б╤В╨▓╨░: ╤Н╨║╤А╨░╨╜╨╜╤Л╨╡ ╨║╨╛╨╛╤А╨┤╨╕╨╜╨░╤В╤Л ╨╗╨╡╨▓╨╛╨│╨╛ ╨▓╨╡╤А╤Е╨╜╨╡╨│╨╛ ╤Г╨│╨╗╨░, ╤И╨╕╤А╨╕╨╜╨░, ╨▓╤Л╤Б╨╛╤В╨░,
-                                                                            //╨▓ ╨║╨╛╤В╨╛╤А╤Л╤Е ╨╝╨╛╨╢╨╜╨╛ ╤А╨░╨╖╨╝╨╡╤Й╨░╤В╤М ╤Б╨╛╨┤╨╡╤А╨╢╨╕╨╝╨╛╨╡ (╨╕╤Б╨║╨╗╤О╤З╨╡╨╜╤Л ╨│╤А╨░╨╜╨╕╤Ж╤Л, ╨╝╨╡╨╜╤О ╨╕ ╨┐╤А.)
+typedef struct {WINDOW *win; int X;int Y; int width;int height;} wndprops_t;//созданное окно приложения и его свойства: экранные координаты левого верхнего угла, ширина, высота,
+                                                                            //в которых можно размещать содержимое (исключены границы, меню и пр.)
 
-static int UIWndCreate(wndprops_t *wprops);                                 //╤Б╨╛╨╖╨┤╨░╤В╤М ╨╛╨║╨╜╨╛ ╨┐╤А╨╕╨╗╨╛╨╢╨╡╨╜╨╕╤П ╨╕ ╨┐╨╡╤А╨╡╨┤╨░╤В╤М ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╤М ╨╜╨╡ ╨╜╨╡╨│╨╛ ╨▓ wprops; ╨▓╨╛╨╖╨▓╤А╨░╤Й╨░╨╡╤В OK/ERR
-static wndresult_t process_menukeys(int key);                               //╨╛╨▒╤А╨░╨▒╨╛╤В╤З╨╕╨║ ╨╜╨░╨╢╨░╤В╨╕╨╣ ╨║╨╗╨░╨▓╨╕╤И ╨╝╨╡╨╜╤О; ╨▓╨╛╨╖╨▓╤А╨░╤Й╨░╨╡╤В ╨║╨╛╨┤, ╤Б╨╛╨╛╤В╨▓╨╡╤В╤Б╤В╨▓╤Г╤О╤Й╨╕╨╣ ╨▓╤Л╨▒╤А╨░╨╜╨╜╨╛╨╝╤Г ╨┐╤Г╨╜╨║╤В╤Г ╨╝╨╡╨╜╤О, ╨╕╨╗╨╕ VOID ╨▓ ╨╕╨╜╨╛╨╝ ╤Б╨╗╤Г╤З╨░╨╡
-static void writeln_centred(WINDOW *win, int lnum, char *ln);               //╨▓╤Л╨▓╨╡╤Б╤В╨╕ ╤Б╤В╤А╨╛╨║╤Г ╨┐╨╛ ╤Ж╨╡╨╜╤В╤А╤Г
-static void writeln_alignr(WINDOW *win, int lnum, int indentr, char *ln);   //╨▓╤Л╨▓╨╡╤Б╤В╨╕ ╤Б╤В╤А╨╛╨║╤Г ╤Б ╨▓╤Л╤А╨░╨▓╨╜╨╕╨▓╨░╨╜╨╕╨╡╨╝ ╨┐╨╛ ╨┐╤А╨░╨▓╨╛╨╝╤Г ╨║╤А╨░╤О ╤Б ╨╖╨░╨┤╨░╨╜╨╜╤Л╨╝ ╨╛╤В╤Б╤В╤Г╨┐╨╛╨╝ ╨╛╤В ╨║╤А╨░╤П
-static void fillln(WINDOW *win, int lnum);                                  //╨╖╨░╨║╤А╨░╤Б╨╕╤В╤М ╤Б╤В╤А╨╛╨║╤Г ╤В╨╡╤А╨╝╨╕╨╜╨░╨╗╨░ ╤Ж╨▓╨╡╤В╨╛╨╝ ╤Д╨╛╨╜╨░
+static int UIWndCreate(wndprops_t *wprops);                                 //создать окно приложения и передать указатель не него в wprops; возвращает OK/ERR
+static wndresult_t process_menukeys(int key);                               //обработчик нажатий клавиш меню; возвращает код, соответствующий выбранному пункту меню, или VOID в ином случае
+static void writeln_centred(WINDOW *win, int lnum, char *ln);               //вывести строку по центру
+static void writeln_alignr(WINDOW *win, int lnum, int indentr, char *ln);   //вывести строку с выравниванием по правому краю с заданным отступом от края
+static void fillln(WINDOW *win, int lnum);                                  //закрасить строку терминала цветом фона
 
 int UIInit(void){
-    initscr();                                                              //╨╕╨╜╨╕╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╤В╤М PDCurses
-    if (start_color() == ERR){                                              //╨╕╨╜╨╕╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╤В╤М ╤Ж╨▓╨╡╤В╨░
+    initscr();                                                              //инициализировать PDCurses
+    if (start_color() == ERR){                                              //инициализировать цвета
         endwin();
         return ERR;
     }
-    if (COLS<MIN_TERMINAL_WIDTH) resize_term(LINES, MIN_TERMINAL_WIDTH);    //╨╕╨╖╨╝╨╡╨╜╨╕╤В╤М ╤А╨░╨╖╨╝╨╡╤А ╨╛╨║╨╜╨░ ╤В╨╡╤А╨╝╨╕╨╜╨░╨╗╨░, ╤З╤В╨╛╨▒ ╨▓╨╝╨╡╤Б╤В╨╕╨╗╨╛╤Б╤М ╤Б╨╛╨┤╨╡╤А╨╢╨╕╨╝╨╛╨╡
-    init_pair(WND_COLOR_PAIR_NUM, COLOR_WHITE, COLOR_BLUE);                 //╨╕╨╜╨╕╤Ж╨╕╨░╨╗╨╕╨╖╨░╤Ж╨╕╤П ╤Ж╨▓╨╡╤В╨╛╨▓╤Л╤Е ╨┐╨░╤А
+    if (COLS<MIN_TERMINAL_WIDTH) resize_term(LINES, MIN_TERMINAL_WIDTH);    //изменить размер окна терминала, чтоб вместилось содержимое
+    init_pair(WND_COLOR_PAIR_NUM, COLOR_WHITE, COLOR_BLUE);                 //инициализация цветовых пар
     init_pair(HEAD_COLOR_PAIR_NUM, COLOR_BLACK, COLOR_GREEN);
     init_pair(MENU_COLOR_PAIR_NUM, COLOR_BLACK, COLOR_WHITE);
     init_pair(PBAR_COLOR_PAIR_NUM, COLOR_YELLOW, COLOR_WHITE);
@@ -41,7 +41,7 @@ static void writeln_centred(WINDOW *win, int lnum, char *ln){
 
 static void writeln_alignr(WINDOW *win, int lnum, int indentr, char *ln){
     int start_index = COLS - strlen(ln) - indentr;
-    if (start_index < 0) return; //╤Б╤В╤А╨╛╨║╨░ ╨╜╨╡ ╨▓╨╝╨╡╤Й╨░╨╡╤В╤Б╤П ╨▓ ╨╛╨║╨╜╨╛
+    if (start_index < 0) return; //строка не вмещается в окно
     mvwaddstr(win, lnum, start_index, ln);
 }
 
@@ -53,19 +53,19 @@ static void fillln(WINDOW *win, int lnum){
 
 static int UIWndCreate(wndprops_t *wprops){
     if (wprops == NULL) return ERR;
-    if (wprops->win != NULL) delwin(wprops->win);                           //╤Г╨╜╨╕╤З╤В╨╛╨╢╨╕╤В╤М ╤Б╤Г╤Й╨╡╤Б╤В╨▓╤Г╤О╤Й╨╡╨╡ ╨╛╨║╨╜╨╛
-    WINDOW *win = newwin(0, 0, 0, 0);                                       //╤Б╨╛╨╖╨┤╨░╤В╤М ╨╜╨╛╨▓╨╛╨╡ ╨╛╨║╨╜╨╛ ╤А╨░╨╖╨╝╨╡╤А╨╛╨╝ = ╨╛╨║╨╜╤Г ╤В╨╡╤А╨╝╨╕╨╜╨░╨╗╨░
+    if (wprops->win != NULL) delwin(wprops->win);                           //уничтожить существующее окно
+    WINDOW *win = newwin(0, 0, 0, 0);                                       //создать новое окно размером = окну терминала
     if (win == NULL) return ERR;
 
-    wbkgd(win, COLOR_PAIR(WND_COLOR_PAIR_NUM));                             //╨┐╤А╨╕╨╝╨╡╨╜╨╕╤В╤М ╨║ ╨╛╨║╨╜╤Г ╤Ж╨▓╨╡╤В╨░ ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О
-    wattrset(win, COLOR_PAIR(HEAD_COLOR_PAIR_NUM));                         //╨┐╤А╨╕╨╝╨╡╨╜╨╕╤В╤М ╤Ж╨▓╨╡╤В ╤Б╤В╤А╨╛╨║╨╕ ╨╖╨░╨│╨╛╨╗╨╛╨▓╨║╨░
-    fillln(win, 0);                                                         //╨╖╨░╨╗╨╕╤В╤М ╤Б╤В╤А╨╛╨║╤Г ╤Ж╨▓╨╡╤В╨╛╨╝ ╤Д╨╛╨╜╨░
-    writeln_centred(win, 0, WND_HEADER);                                    //╨▓╤Л╨▓╨╡╤Б╤В╨╕ ╤Б╤В╤А╨╛╨║╤Г
-    fillln(win, LINES-1);                                                   //╨░╨╜╨░╨╗╨╛╨│╨╕╤З╨╜╨╛ ╨┤╨╗╤П ╨╝╨╡╨╜╤О
-    writeln_centred(win, LINES-1, "F2 - ╨▓╤Б╨╡ ╨╖╨░╨┐╨╕╤Б╨╕, F3 - ╨░╨┤╨▓╨╛╨║╨░╤В╤Л, F4 - ╨┐╨╛╨╕╤Б╨║, ESC - ╨╖╨░╨▓╨╡╤А╤И╨╕╤В╤М ╨┐╤А╨╛╨│╤А╨░╨╝╨╝╤Г");
-    wstandend(win);                                                         //╨╛╤В╨║╨╗╤О╤З╨╕╤В╤М ╨░╤В╤А╨╕╨▒╤Г╤В╤Л - ╨▓╨╛╨╖╨▓╤А╨░╤В ╨║ ╤Ж╨▓╨╡╤В╨░╨╝ ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О
+    wbkgd(win, COLOR_PAIR(WND_COLOR_PAIR_NUM));                             //применить к окну цвета по умолчанию
+    wattrset(win, COLOR_PAIR(HEAD_COLOR_PAIR_NUM));                         //применить цвет строки заголовка
+    fillln(win, 0);                                                         //залить строку цветом фона
+    writeln_centred(win, 0, WND_HEADER);                                    //вывести строку
+    fillln(win, LINES-1);                                                   //аналогично для меню
+    writeln_centred(win, LINES-1, "F2 - все записи, F3 - адвокаты, F4 - поиск, ESC - завершить программу");
+    wstandend(win);                                                         //отключить атрибуты - возврат к цветам по умолчанию
 
-    mvwhline(win, 1, 1, ACS_HLINE, COLS-2);                                 //╤А╨╕╤Б╤Г╨╡╨╝ ╤А╨░╨╝╨║╤Г ╨┤╨╗╤П ╤Б╨╛╨┤╨╡╤А╨╢╨╕╨╝╨╛╨│╨╛ ╨╛╨║╨╜╨░
+    mvwhline(win, 1, 1, ACS_HLINE, COLS-2);                                 //рисуем рамку для содержимого окна
     mvwhline(win, LINES-3, 1, ACS_HLINE, COLS-2);
     mvwvline(win, 2, 0, ACS_VLINE, LINES-5);
     mvwvline(win, 2, COLS-1, ACS_VLINE, LINES-5);
@@ -74,7 +74,7 @@ static int UIWndCreate(wndprops_t *wprops){
     mvwaddch(win, LINES-3, 0, ACS_LLCORNER);
     mvwaddch(win, LINES-3, COLS-1, ACS_LRCORNER);
 
-    wprops->win = win;                                                      //╨▓╨╛╨╖╨▓╤А╨░╤Й╨░╨╡╨╝ ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╤М ╨╜╨░ ╤Б╨╛╨╖╨┤╨░╨╜╨╜╨╛╨╡ ╨╛╨║╨╜╨╛ ╨╕ ╤А╨░╨╖╨╝╨╡╤А╤Л ╨┤╨╛╤Б╤В╤Г╨┐╨╜╨╛╨╣ ╨┤╨╗╤П ╨▓╤Л╨▓╨╛╨┤╨░ ╨╕╨╜╤Д╨╛╤А╨╝╨░╤Ж╨╕╨╕ ╨╛╨▒╨╗╨░╤Б╤В╨╕
+    wprops->win = win;                                                      //возвращаем указатель на созданное окно и размеры доступной для вывода информации области
     wprops->X = 1;
     wprops->Y = 2;
     wprops->height = LINES - 2*wprops->Y-1;
@@ -86,14 +86,14 @@ static wndresult_t process_menukeys(int key){
     switch(key){
         case KBD_ESC:   //close the window
             return EXIT;
-        case KEY_F(2):  //F2 - ╨▓╤Б╨╡ ╨╖╨░╨┐╨╕╤Б╨╕
+        case KEY_F(2):  //F2 - все записи
             return SHOWDB;
-        case KEY_F(3):  //F3 - ╨░╨┤╨▓╨╛╨║╨░╤В╤Л
+        case KEY_F(3):  //F3 - адвокаты
             return SHOWLR;
-        case KEY_F(4):  //F4 - ╨┐╨╛╨╕╤Б╨║
+        case KEY_F(4):  //F4 - поиск
             return DOSEARCH;
-        default:        //╨╜╨░╨╢╨░╤В╨░╤П ╨║╨╗╨░╨▓╨╕╤И╨░ ╨╜╨╡ ╨╛╤В╨╜╨╛╤Б╨╕╤В╤Б╤П ╨║ ╨╝╨╡╨╜╤О
-            return VOID;
+        default:        //нажатая клавиша не относится к меню
+            return NOPE;
     }
 }
 
@@ -117,14 +117,17 @@ wndresult_t UIDisplayStrings(int argc, char *argv[]){
     noecho();
     keypad(win, TRUE);
     meta(win, TRUE);
-    int key = wgetch(win);
-    int retcode = process_menukeys(key);
-    if (retcode != VOID){
+    bool finish = FALSE;
+    int retcode = EXIT;
+    for(;!finish;){
+        retcode = process_menukeys(wgetch(win));
+        if (retcode!=NOPE) finish = TRUE;
+    }
+    if (finish){
         delwin(win);
         free(wprops);
         return retcode;
-    }
-    return ERROR;
+    } else return ERROR;
 }
 
 wndresult_t UIDisplayDbrecords(const struct List *lst, const char *dbname){
@@ -132,7 +135,7 @@ wndresult_t UIDisplayDbrecords(const struct List *lst, const char *dbname){
     wndprops_t *wprops = calloc(1, sizeof(wndprops_t));
     if (wprops == NULL) return ERROR;
     WINDOW *win = NULL;
-    size_t scr_counter = 0;                                     //╤В╨╡╨║╤Г╤Й╨░╤П ╨┐╨╛╨╖╨╕╤Ж╨╕╤П ╨┐╤А╨╛╨║╤А╤Г╤В╨║╨╕
+    size_t scr_counter = 0;                                     //текущая позиция прокрутки
     char str[MAX_LINE_NEEDED];
     int key;
     bool finish = FALSE;
@@ -142,7 +145,7 @@ wndresult_t UIDisplayDbrecords(const struct List *lst, const char *dbname){
             free(wprops);
             return ERROR;
         }
-                                                                //╨╜╨░╤А╨╕╤Б╨╛╨▓╨░╤В╤М ╨┐╨╛╨╗╨╛╤Б╤Г ╨┐╤А╨╛╨║╤А╤Г╤В╨║╨╕
+                                                                //нарисовать полосу прокрутки
         const int scroller_top = wprops->Y+1;
         const int scroller_btm = wprops->Y+wprops->height-2;
         const int scroller_col = wprops->X+wprops->width;
@@ -151,12 +154,12 @@ wndresult_t UIDisplayDbrecords(const struct List *lst, const char *dbname){
         }
         mvwaddch(win, scroller_top-1, scroller_col, ACS_UARROW);
         mvwaddch(win, scroller_btm+1, scroller_col, ACS_DARROW);
-                                                                //╨╜╨░╤А╨╕╤Б╨╛╨▓╨░╤В╤М ╨┐╨╛╨╗╨╖╤Г╨╜╨╛╨║ ╨╜╨░ ╨┐╨╛╨╗╨╛╤Б╨╡ ╨┐╤А╨╛╨║╤А╤Г╤В╨║╨╕
+                                                                //нарисовать ползунок на полосе прокрутки
         int scroll_position = scroller_top;
         if (lst->length > 0) scroll_position += scr_counter * (wprops->height-2) / lst->length;
         mvwaddch(win, scroll_position, scroller_col, CHR_FULL_BLOCK);
 
-        size_t i=0, line = wprops->Y;                          //╨▓╤Л╨▓╨╡╤Б╤В╨╕ ╤Н╨╗╨╡╨╝╨╡╨╜╤В╤Л ╤Б╨┐╨╕╤Б╨║╨░
+        size_t i=0, line = wprops->Y;                          //вывести элементы списка
         for (struct Node *n=lst->head;n!=NULL;n=n->next,i++){
             if (i<scr_counter) continue;
             if (i>=scr_counter+wprops->height) break;
@@ -164,18 +167,18 @@ wndresult_t UIDisplayDbrecords(const struct List *lst, const char *dbname){
             snprintf(str,MAX_LINE_NEEDED,"%-*s  %5u  %s  %s", DBREC_NAME_LENGTH, n->data->name, n->data->sum, n->data->date, n->data->lawyer);
             mvwaddstr(win, line++, wprops->X, str);
         }
-                                                                //╨▓╤Л╨▓╨╡╤Б╤В╨╕ ╤Б╤З╤С╤В╤З╨╕╨║╨╕ ╤Б╤В╤А╨╛╨║ ╨▓╨╜╨╕╨╖╤Г ╤Б╨┐╤А╨░╨▓╨░
+                                                                //вывести счётчики строк внизу справа
         memset(str, '\0', MAX_LINE_NEEDED);
         snprintf(str,MAX_LINE_NEEDED," %"PRIu64"-%"PRIu64" / %"PRIu64"", scr_counter+1, i, lst->length);
         writeln_alignr(win, wprops->Y+wprops->height, 2, str);
         if (dbname != NULL) mvwaddstr(win, wprops->Y+wprops->height+1, wprops->X, dbname);
 
         wrefresh(win);
-        curs_set(CURSOR_INVISIBLE);                             //╤Б╨┐╤А╤П╤В╨░╤В╤М ╨║╤Г╤А╤Б╨╛╤А
+        curs_set(CURSOR_INVISIBLE);                             //спрятать курсор
         noecho();
         keypad(win, TRUE);
         meta(win, TRUE);
-        int fast_step = wprops->height;                         //╨┐╤А╨╕ ╤Б╤В╨░╨╜╨┤╨░╤А╤В╨╜╨╛╨╝ ╤Б╨║╤А╨╛╨╗╨╗╨╡ ╨╖╨░ ╨╛╨┤╨╕╨╜ ╤А╨░╨╖ ╤Б╨┤╨▓╨╕╨│╨░╨╡╤В╤Б╤П ╨╛╨┤╨╜╨░ ╤Б╤В╤А╨╛╨║╨░, ╨┐╤А╨╕ ╨▒╤Л╤Б╤В╤А╨╛╨╝ fast_step ╤Б╤В╤А╨╛╨║
+        int fast_step = wprops->height;                         //при стандартном скролле за один раз сдвигается одна строка, при быстром fast_step строк
         key = wgetch(win);
         switch(key){
         case KEY_UP:    //normal scroll up
@@ -200,7 +203,7 @@ wndresult_t UIDisplayDbrecords(const struct List *lst, const char *dbname){
             break;
         default:        //process menu
             retcode = process_menukeys(key);
-            if (retcode!=VOID) finish = TRUE;
+            if (retcode!=NOPE) finish = TRUE;
             break;
         }
     }
@@ -220,8 +223,8 @@ wndresult_t UISearch(char *str1, const int len1, char *str2, const int len2){
     WINDOW *win = NULL;
     const int LINE_INDENT_H = 8;
     const int LINE_INDENT_V = 4;
-    const char *inp_title1 = "╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╨╕╨╝╤П ╨▓╨║╨╗╨░╨┤╤З╨╕╨║╨░";
-    const char *inp_title2 = "╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╨╕╨╝╤П ╨░╨┤╨▓╨╛╨║╨░╤В╨░";
+    const char *inp_title1 = "Введите имя вкладчика";
+    const char *inp_title2 = "Введите имя адвоката";
     const int inp_X = LINE_INDENT_H+wprops->X+24;
     const int inp1_Y = LINE_INDENT_V+wprops->Y+2;
     const int inp2_Y = LINE_INDENT_V+wprops->Y+4;
@@ -234,10 +237,10 @@ wndresult_t UISearch(char *str1, const int len1, char *str2, const int len2){
             return ERROR;
         }
         curs_set(CURSOR_REGULAR);
-        mvwaddstr(win, inp1_Y-2, LINE_INDENT_H+wprops->X, "\t╨Я╨╛╨╕╤Б╨║ ╨▓ ╨С╨Ф:");
+        mvwaddstr(win, inp1_Y-2, LINE_INDENT_H+wprops->X, "\tПоиск в БД:");
         mvwaddstr(win, inp1_Y, LINE_INDENT_H+wprops->X, inp_title1);
         mvwaddstr(win, inp2_Y, LINE_INDENT_H+wprops->X, inp_title2);
-        mvwaddstr(win, inp2_Y+2, LINE_INDENT_H+wprops->X, "\tEnter ╨┤╨╗╤П ╨┐╨╛╨┤╤В╨▓╨╡╤А╨╢╨┤╨╡╨╜╨╕╤П");
+        mvwaddstr(win, inp2_Y+2, LINE_INDENT_H+wprops->X, "\tEnter для подтверждения");
         wrefresh(win);
 
         flushinp();
@@ -261,7 +264,7 @@ wndresult_t UISearch(char *str1, const int len1, char *str2, const int len2){
                 break;
             default:        //process menu
                 retcode = process_menukeys(key);
-                if (retcode!=VOID) finish = TRUE;
+                if (retcode!=NOPE) finish = TRUE;
             break;
             }
         }

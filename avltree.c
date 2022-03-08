@@ -6,14 +6,14 @@
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 
 /*
- *  Ð’ÑÐ¿Ð¾Ð¼Ð¾Ð³Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ - Ð¿Ð¾Ð²Ð¾Ñ€Ð¾Ñ‚Ñ‹ Ð¸ Ð²ÑÑ‚Ð°Ð²ÐºÐ° Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹.
- *  ÐšÐ°Ð¶Ð´Ð°Ñ Ñ„-Ñ†Ð¸Ñ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÑÑ‹Ð»ÐºÑƒ Ð½Ð° Ð°ÐºÑ‚ÑƒÐ»ÑŒÐ½ÑƒÑŽ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñƒ (Ð¿Ð¾Ð´)Ð´ÐµÑ€ÐµÐ²Ð°.
+ *  ‚á¯®¬®£ â¥«ì­ë¥ äã­ªæ¨¨ - ¯®¢®à®âë ¨ ¢áâ ¢ª  ¢¥àè¨­ë.
+ *  Š ¦¤ ï ä-æ¨ï ¢®§¢à é ¥â ááë«ªã ­   ªâã«ì­ãî ¢¥àè¨­ã (¯®¤)¤¥à¥¢ .
  */
 static struct Vertex* rotateLL(struct Vertex *v);
 static struct Vertex* rotateLR(struct Vertex *v);
 static struct Vertex* rotateRR(struct Vertex *v);
 static struct Vertex* rotateRL(struct Vertex *v);
-static struct Vertex* insert(struct Vertex *v, struct Vertex *root, bool *grown); //Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼Ð°Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð°, Ð²ÐµÑ€ÑˆÐ¸Ð½Ð° Ð´ÐµÑ€ÐµÐ²Ð°, Ñ„Ð»Ð°Ð³ Ñ€Ð¾ÑÑ‚Ð° (1 - Ð´ÐµÑ€ÐµÐ²Ð¾ Ð²Ñ‹Ñ€Ð¾ÑÐ»Ð¾, 0 - Ð½ÐµÑ‚)
+static struct Vertex* insert(struct Vertex *v, struct Vertex *root, bool *grown); //¤®¡ ¢«ï¥¬ ï ¢¥àè¨­ , ¢¥àè¨­  ¤¥à¥¢ , ä« £ à®áâ  (1 - ¤¥à¥¢® ¢ëà®á«®, 0 - ­¥â)
 
 static struct Vertex* rotateLL(struct Vertex *v){
     struct Vertex *q = v->left;
@@ -132,10 +132,10 @@ static struct Vertex* insert(struct Vertex *v, struct Vertex *root, bool *grown)
 
 struct Vertex* TreeInsert(struct DbRecord *data, struct Vertex *root)
 {
-    if (data==NULL) return root;                        //Ð½ÐµÑ‡ÐµÐ³Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑ‚ÑŒ
+    if (data==NULL) return root;                        //­¥ç¥£® ¤®¡ ¢«ïâì
     struct Vertex *v = calloc(1,sizeof(struct Vertex));
-    if (v==NULL) return NULL;                           //Ð¾ÑˆÐ¸Ð±ÐºÐ° Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¸Ñ Ð¿Ð°Ð¼ÑÑ‚Ð¸
-    v->data = data;                                     //Ð¿Ñ€Ð¸ÑÐ²Ð°Ð¸Ð²Ð°ÐµÐ¼ ÑÑÑ‹Ð»ÐºÑƒ Ð½Ð° Ð´Ð°Ð½Ð½Ñ‹Ðµ
+    if (v==NULL) return NULL;                           //®è¨¡ª  ¢ë¤¥«¥­¨ï ¯ ¬ïâ¨
+    v->data = data;                                     //¯à¨á¢ ¨¢ ¥¬ ááë«ªã ­  ¤ ­­ë¥
     v->left = NULL;
     v->right = NULL;
     v->bal = 0;
@@ -143,26 +143,28 @@ struct Vertex* TreeInsert(struct DbRecord *data, struct Vertex *root)
 	return insert(v, root, &grown);
 }
 
-void TreeDestruct(struct Vertex *root){                 //Ñ€ÐµÐºÑƒÑ€ÑÐ¸Ð²Ð½Ð¾ ÑƒÐ´Ð°Ð»ÑÐµÐ¼ Ð²ÑÐµ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹ Ð´ÐµÑ€ÐµÐ²Ð°
+void TreeDestruct(struct Vertex *root){                 //à¥ªãàá¨¢­® ã¤ «ï¥¬ ¢á¥ ¢¥àè¨­ë ¤¥à¥¢ 
     if (root==NULL) return;
     TreeDestruct(root->left);
     TreeDestruct(root->right);
     free(root);
 }
 
-void TreeSearch(const char* key, struct Vertex *root, struct List *result){
+void TreeSearch(const char* name, const char* lawyer, struct Vertex *root, struct List *result){
     if (root==NULL) return;
     struct Vertex *current = root;
     for (;current!=NULL;){
-        int cmp = strncmp(key, current->data->name, strlen(key)); //0 Ð´Ð»Ñ Ð¿ÑƒÑÑ‚Ñ‹Ñ… ÑÑ‚Ñ€Ð¾Ðº
-        if (cmp>0){                                     //Ð½Ð°Ñ‡Ð°Ð² Ñ ÐºÐ¾Ñ€Ð½Ñ, Ð´Ð²Ð¸Ð¶ÐµÐ¼ÑÑ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¸Ð»Ð¸ Ð¿Ñ€Ð°Ð²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾...
+        int cmp = strncmp(name, current->data->name, strlen(name)); //0 ¤«ï ¯ãáâëå áâà®ª
+        if (cmp>0){                                     //­ ç ¢ á ª®à­ï, ¤¢¨¦¥¬áï ¢ «¥¢®¥ ¨«¨ ¯à ¢®¥ ¯®¤¤¥à¥¢®...
             current = current->right;
         } else if (cmp<0){
             current = current->left;
-        } else {
-            ListAppend(current->data, result);          //...Ð´Ð¾ Ð½Ð°Ñ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ ÑÐ¾Ð²Ð¿Ð°Ð´ÐµÐ½Ð¸Ñ, Ð½Ð¾ Ð½Ðµ Ð¾ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ÑÑ, Ñ‚.Ðº. Ñ‡Ð°ÑÑ‚Ð¸Ñ‡Ð½Ð¾Ðµ ÑÐ¾Ð²Ð¿Ð°Ð´ÐµÐ½Ð¸Ðµ Ð½Ðµ Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ ÐµÐ´Ð¸Ð½ÑÑ‚Ð²ÐµÐ½Ð½Ð¾Ðµ
-            TreeSearch(key, current->right, result);
-            TreeSearch(key, current->left, result);
+        } else {                                        //...¤® ­ å®¦¤¥­¨ï á®¢¯ ¤¥­¨ï, ­® ­¥ ®áâ ­ ¢«¨¢ ¥¬áï,   à¥ªãàá¨¢­® ¯à®¤®¦ ¥¬ ¯®¨áª ¢ ­ ©¤¥­­®¬ ¯®¤¤¥à¥¢¥ á«¥¢  ­ ¯à ¢® -
+                                                        //â.ª. ç áâ¨ç­®¥ á®¢¯ ¤¥­¨¥ ­¥ ®¡ï§ â¥«ì­® ¥¤¨­áâ¢¥­­®¥
+            TreeSearch(name, lawyer, current->left, result);
+            int cmpl = strncmp(lawyer, current->data->lawyer, strlen(lawyer));
+            if (cmpl==0) ListAppend(current->data, result); //¤®¯®«­¨â¥«ì­ ï ¯à®¢¥àª : ¤®¡ ¢«ï¥¬ ãª § â¥«ì ­  § ¯¨áì ¢ á¯¨á®ª à¥§ã«ìâ â®¢ â®«ìª® ¯à¨ á®¢¯ ¤¥­¨¨ ¯®«ï lawyer
+            TreeSearch(name, lawyer, current->right, result);
             return;
         }
     }

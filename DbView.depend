@@ -43,7 +43,7 @@
 	<stdbool.h>
 	"datastruct.h"
 
-1645115643 source:e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\avltree.c
+1646728140 source:e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\avltree.c
 	<stdlib.h>
 	<strings.h>
 	<stdbool.h>
@@ -65,7 +65,7 @@
 	<strings.h>
 	"datastruct.h"
 
-1645120986 source:e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\main.c
+1646728287 source:e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -85,7 +85,7 @@
 	<wchar.h>
 	<stdbool.h>
 
-1645116188 e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\datastruct.h
+1646727343 e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\datastruct.h
 
 1645110872 source:e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\list.c
 	<stdlib.h>
@@ -113,11 +113,11 @@
 	"uicurs.h"
 	"datastruct.h"
 
-1645111636 e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\uicurs.h
+1646726388 e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\uicurs.h
 	"curses.h"
 	"datastruct.h"
 
-1645120898 source:e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\uicurs.c
+1646728631 source:e:\nextcloud\ftp\Универ\Семестр 3\Структуры и алгоритмы обработки данных (часть 2)\coursework\dbview\uicurs.c
 	<stdlib.h>
 	<strings.h>
 	<inttypes.h>
